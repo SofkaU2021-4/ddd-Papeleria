@@ -7,18 +7,14 @@ import co.com.sofka.domain.generic.DomainEvent;
 public class DireccionAdministradorCambiada extends DomainEvent {
 
 
-    private final AdministradorId entityId;
     private final Direccion direccion;
 
-    public DireccionAdministradorCambiada(AdministradorId entityId, Direccion direccion) {
+    public DireccionAdministradorCambiada( Direccion direccion) {
         super("sofka.papeleria.DireccionAdminstradorCambiada");
-        this.entityId = entityId;
         this.direccion = direccion;
     }
 
-    public AdministradorId getEntityId() {
-        return entityId;
-    }
+
 
     public Direccion getDireccion() {
         return direccion;

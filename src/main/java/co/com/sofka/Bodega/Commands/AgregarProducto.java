@@ -1,11 +1,10 @@
-package co.com.sofka.Bodega.events;
+package co.com.sofka.Bodega.Commands;
 
 import co.com.sofka.Bodega.values.*;
 import co.com.sofka.GenericVO.Nombre;
-import co.com.sofka.domain.generic.DomainEvent;
+import co.com.sofka.domain.generic.Command;
 
-public class ProductoCreado extends DomainEvent {
-
+public class AgregarProducto extends Command {
 
     private final IdProducto entityId;
     private final Nombre nombre;
@@ -15,8 +14,7 @@ public class ProductoCreado extends DomainEvent {
     private final Seccion seccion;
     private final IdBodega idBodega;
 
-    public ProductoCreado(IdProducto entityId, Nombre nombre, Precio precio, Long stock, CodigoBarras codigoBarras, Seccion seccion, IdBodega idBodega) {
-        super("sofka.bodega.productoCreado");
+    public AgregarProducto(IdProducto entityId, Nombre nombre, Precio precio, Long stock, CodigoBarras codigoBarras, Seccion seccion, IdBodega idBodega) {
         this.entityId = entityId;
         this.nombre = nombre;
         this.precio = precio;

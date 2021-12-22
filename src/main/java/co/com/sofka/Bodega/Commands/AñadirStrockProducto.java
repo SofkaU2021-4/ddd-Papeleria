@@ -1,14 +1,14 @@
-package co.com.sofka.Bodega.events;
+package co.com.sofka.Bodega.Commands;
 
 import co.com.sofka.Bodega.values.IdProducto;
-import co.com.sofka.domain.generic.DomainEvent;
+import co.com.sofka.domain.generic.Command;
 
-public class StockProductoDecrementado extends DomainEvent {
+public class AñadirStrockProducto extends Command {
+
     private final IdProducto entityId;
     private final Long stock;
 
-    public StockProductoDecrementado(IdProducto entityId, Long stock) {
-        super("sofka.bodega.StockProductoDecrementado");
+    public AñadirStrockProducto(IdProducto entityId, Long stock) {
         this.entityId = entityId;
         this.stock = stock;
     }

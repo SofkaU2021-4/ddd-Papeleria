@@ -6,11 +6,14 @@ import co.com.sofka.Bodega.events.*;
 import co.com.sofka.Bodega.values.*;
 
 
+import co.com.sofka.GenericVO.Direccion;
+import co.com.sofka.GenericVO.Email;
 import co.com.sofka.GenericVO.Nombre;
 import co.com.sofka.Papeleria.value.PapeleriaId;
 import co.com.sofka.domain.generic.AggregateEvent;
 
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class Bodega extends AggregateEvent<IdBodega> {
@@ -20,11 +23,17 @@ public class Bodega extends AggregateEvent<IdBodega> {
     protected Bodeguero bodeguero;
 
 
-    public Bodega(IdBodega entityId){
+    public Bodega(IdBodega entityId,PapeleriaId papeleriaId){
         super(entityId);
+        this.papeleriaId=papeleriaId;
     }
 
-    public void AgregarProducto(IdProducto entityId, Nombre nombre, Precio precio, Stock stock , CodigoBarras codigoBarras , Seccion seccion , IdBodega idBodega){
+    private Bodega(IdBodega entityId){
+        super(entityId);
+        subscribe(new BodegaChange(this));
+    }
+
+    public void AgregarProducto(IdProducto entityId, Nombre nombre, Precio precio, Long stock , CodigoBarras codigoBarras , Seccion seccion , IdBodega idBodega){
         Objects.requireNonNull(entityId);
         Objects.requireNonNull(nombre);
         Objects.requireNonNull(precio);
@@ -65,19 +74,32 @@ public class Bodega extends AggregateEvent<IdBodega> {
     }
 
 
-    public  void  QuitarStrockProducto(IdProducto entityId ,Stock stock){
+    public  void  QuitarStrockProducto(IdProducto entityId ,Long stock){
         Objects.requireNonNull(entityId);
         Objects.requireNonNull(stock);
         appendChange(new StockProductoDecrementado(entityId,stock));
     }
 
-    public  void  AñadirStrockProducto(IdProducto entityId ,Stock stock){
+    public  void  AñadirStrockProducto(IdProducto entityId ,Long stock){
         Objects.requireNonNull(entityId);
         Objects.requireNonNull(stock);
         appendChange(new StockProductoAumentado(entityId,stock));
     }
 
+    public Optional<Producto> BuscarProductoPorId(IdProducto entityId ){
+        return productos.stream()
+                .filter(factura-> factura.equals(entityId))
+                .findFirst();
+    }
 
+    public  void  ActualizarEmailBodeguero(Email email){
+        Objects.requireNonNull(email);
+        appendChange(new EmailBodegueroCambiado(email));
+    }
+    public  void  ActualizarDireccionBodeguero(Direccion direccion){
+        Objects.requireNonNull(direccion);
+        appendChange(new DireccionBodegueroCambiada(direccion));
+    }
 
 
 

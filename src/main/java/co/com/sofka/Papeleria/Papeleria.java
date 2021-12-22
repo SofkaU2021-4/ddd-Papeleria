@@ -26,7 +26,7 @@ public class Papeleria extends AggregateEvent<PapeleriaId> {
     protected Nombre nombre;
     protected Administrador administrador;
     protected Set<IdFactura>  facturas;
-    protected Set<IdBodega> bodegaId;
+    protected IdBodega bodegaId;
 
 
     public  Papeleria(PapeleriaId entityId, Nombre nombre , Direccion direccion ){
@@ -56,16 +56,16 @@ public class Papeleria extends AggregateEvent<PapeleriaId> {
         Objects.requireNonNull(identificacion);
         appendChange(new AdministradorCreado(entityId,nombre,identificacion,direccion,email)).apply();
     }
-    public void  actualizarEmailAdministrador(AdministradorId entityId, Email email){
-        Objects.requireNonNull(entityId);
+    public void  actualizarEmailAdministrador( Email email){
+
         Objects.requireNonNull(email);
-        appendChange(new EmailAdministradorCambiada(entityId,email)).apply();
+        appendChange(new EmailAdministradorCambiada(email)).apply();
     }
-    public void  actualizarDireccion(AdministradorId entityId, Direccion direccion){
-        Objects.requireNonNull(entityId);
+    public void  actualizarDireccion( Direccion direccion){
         Objects.requireNonNull(direccion);
-        appendChange(new DireccionAdministradorCambiada(entityId,direccion)).apply();
+        appendChange(new DireccionAdministradorCambiada(direccion)).apply();
     }
+
     public Optional<IdFactura> getFacturaPorId(IdFactura entityId ){
         return facturas.stream()
                 .filter(factura-> factura.equals(entityId))
@@ -89,7 +89,7 @@ public class Papeleria extends AggregateEvent<PapeleriaId> {
         return facturas;
     }
 
-    public Set<IdBodega> bodegaId() {
+    public IdBodega bodegaId() {
         return bodegaId;
     }
 }

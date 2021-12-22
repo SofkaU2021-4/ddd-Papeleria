@@ -6,17 +6,13 @@ import co.com.sofka.domain.generic.Command;
 
 public class ActualizarDireccion extends Command {
 
-    private final AdministradorId entityId;
+
     private final Direccion direccion;
 
-    public ActualizarDireccion(AdministradorId entityId, Direccion direccion) {
-        this.entityId = entityId;
+    public ActualizarDireccion( Direccion direccion) {
         this.direccion = direccion;
     }
 
-    public AdministradorId getEntityId() {
-        return entityId;
-    }
 
     public Direccion getEmail() {
         return direccion;

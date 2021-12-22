@@ -1,15 +1,15 @@
-package co.com.sofka.Bodega.events;
+package co.com.sofka.Bodega.Commands;
 
 import co.com.sofka.Bodega.values.IdProducto;
 import co.com.sofka.GenericVO.Nombre;
-import co.com.sofka.domain.generic.DomainEvent;
+import co.com.sofka.domain.generic.Command;
 
-public class NombreProductoActualizado extends DomainEvent {
+public class ActualizarNombreProducto extends Command {
+
     private final IdProducto entityId;
     private final Nombre nombre;
 
-    public NombreProductoActualizado(IdProducto entityId, Nombre nombre) {
-        super("sofka.bodega.NombreProductoActualizado");
+    public ActualizarNombreProducto(IdProducto entityId, Nombre nombre) {
         this.entityId = entityId;
         this.nombre = nombre;
     }
