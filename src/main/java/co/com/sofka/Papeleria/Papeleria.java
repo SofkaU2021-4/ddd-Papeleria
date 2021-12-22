@@ -61,7 +61,7 @@ public class Papeleria extends AggregateEvent<PapeleriaId> {
         Objects.requireNonNull(email);
         appendChange(new EmailAdministradorCambiada(email)).apply();
     }
-    public void  actualizarDireccion( Direccion direccion){
+    public void  actualizarDireccionAdminstrador( Direccion direccion){
         Objects.requireNonNull(direccion);
         appendChange(new DireccionAdministradorCambiada(direccion)).apply();
     }

@@ -1,0 +1,10 @@
+
+E
+java:S1068"*Remove this unused "nombre" private field.(ó…åžüÿÿÿÿ
+H
+java:S1068"2Remove this unused "identificacion" private field.(Óí“¸
+D
+java:S1068")Remove this unused "email" private field.(—Ò»ýÿÿÿÿÿ
+J
+java:S1068"-Remove this unused "direccion" private field.(¢Ò¦û8ûùâøÝ/
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÓÞàžýÿÿÿÿ

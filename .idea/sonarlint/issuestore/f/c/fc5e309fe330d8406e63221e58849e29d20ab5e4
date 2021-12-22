@@ -1,0 +1,14 @@
+
+m
+java:S1104"RMake nombre a static final constant or non-public and provide accessors if needed.(ù±Óíûÿÿÿÿ
+m
+java:S1104"RMake precio a static final constant or non-public and provide accessors if needed.(ºöš®ùÿÿÿÿ
+g
+java:S1104"QMake stock a static final constant or non-public and provide accessors if needed.(å¿ûÎ
+n
+java:S1104"XMake codigoBarras a static final constant or non-public and provide accessors if needed.(‚²ÕÕ
+n
+java:S1104"SMake seccion a static final constant or non-public and provide accessors if needed.(‰üîÂûÿÿÿÿ
+j
+java:S1104"TMake bodegaId a static final constant or non-public and provide accessors if needed.(ëÜ¡
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÓŞàıÿÿÿÿ

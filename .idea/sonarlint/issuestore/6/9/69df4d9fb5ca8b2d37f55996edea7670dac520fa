@@ -1,0 +1,6 @@
+
+K
+java:S1128".Remove this unused import 'java.util.Objects'.(¼¸õ›8¡šØ€Þ/
+K
+java:S1144"0Remove this unused private "Precio" constructor.(’ºû‡þÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‘ †¯

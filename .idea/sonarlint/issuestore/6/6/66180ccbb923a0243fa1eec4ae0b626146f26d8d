@@ -1,0 +1,6 @@
+
+L
+java:S1128"*Remove this unused import 'java.util.Set'.(ö²„¤þÿÿÿÿ8Û¯Ú€Þ/
+S
+java:S1144"1Remove this unused private "Seccion" constructor.(úŠäñùÿÿÿÿ8®”Ú€Þ/
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‘ †¯
