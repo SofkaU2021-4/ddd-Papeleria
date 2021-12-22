@@ -17,4 +17,6 @@ public class PapeleriaId extends Identity {
     public static PapeleriaId of(String id){
         return new PapeleriaId(id);
     }
+
+
 }

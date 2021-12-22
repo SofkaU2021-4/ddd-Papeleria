@@ -1,23 +1,21 @@
-package co.com.sofka.Factura.events;
+package co.com.sofka.Factura.Commands;
 
 import co.com.sofka.Bodega.values.IdBodega;
-import co.com.sofka.Factura.Entities.Cliente;
-import co.com.sofka.Factura.Entities.Vendedor;
 import co.com.sofka.Factura.values.Fecha;
 import co.com.sofka.Factura.values.IdCliente;
 import co.com.sofka.Factura.values.IdVendedor;
 import co.com.sofka.Papeleria.value.PapeleriaId;
-import co.com.sofka.domain.generic.DomainEvent;
+import co.com.sofka.domain.generic.Command;
 
-public class FacturaCreada extends DomainEvent {
+public class CrearFactura extends Command {
     private final Fecha fecha;
     private final PapeleriaId papeleriaId;
     private final IdBodega idBodega;
     private final IdVendedor idVendedor;
     private final IdCliente idCliente;
 
-    public FacturaCreada(IdVendedor idVendedor, IdCliente idCliente, Fecha fecha, PapeleriaId papeleriaId, IdBodega idBodega) {
-        super("sofka.factura.FacturaCreada");
+
+    public CrearFactura(IdVendedor idVendedor, IdCliente idCliente, Fecha fecha, PapeleriaId papeleriaId, IdBodega idBodega) {
         this.idVendedor = idVendedor;
         this.idCliente = idCliente;
         this.fecha = fecha;

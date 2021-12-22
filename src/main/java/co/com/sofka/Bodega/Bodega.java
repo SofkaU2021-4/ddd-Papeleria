@@ -110,10 +110,7 @@ public class Bodega extends AggregateEvent<IdBodega> {
         appendChange(new DireccionBodegueroCambiada(direccion)).apply();
     }
 
-
-
-
-
-
-
+    public Set<Producto> getProductos() {
+        return productos;
+    }
 }
