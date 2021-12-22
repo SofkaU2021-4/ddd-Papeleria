@@ -9,7 +9,7 @@ public class PrecioProductoActualizado extends DomainEvent {
     private final Precio precio;
 
     public PrecioProductoActualizado(IdProducto entityId, Precio precio) {
-        super("sofka.bodega.productoCreado");
+        super("sofka.bodega.PrecioProductoActualizado");
         this.entityId = entityId;
         this.precio = precio;
     }

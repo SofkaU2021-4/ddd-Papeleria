@@ -10,7 +10,7 @@ public class BodegaCreada extends DomainEvent {
     private final PapeleriaId papeleriaId;
 
     public BodegaCreada(PapeleriaId papeleriaId){
-        super("sofka.papeleria.papeleriaCreada");
+        super("sofka.bodega.BodegaCreada");
         this.papeleriaId = papeleriaId;
     }
 

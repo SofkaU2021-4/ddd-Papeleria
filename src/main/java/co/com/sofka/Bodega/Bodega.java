@@ -11,7 +11,9 @@ import co.com.sofka.GenericVO.Email;
 import co.com.sofka.GenericVO.Nombre;
 import co.com.sofka.Papeleria.value.PapeleriaId;
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -26,11 +28,18 @@ public class Bodega extends AggregateEvent<IdBodega> {
     public Bodega(IdBodega entityId,PapeleriaId papeleriaId){
         super(entityId);
         this.papeleriaId=papeleriaId;
+        appendChange(new BodegaCreada(papeleriaId));
     }
 
     private Bodega(IdBodega entityId){
         super(entityId);
         subscribe(new BodegaChange(this));
+    }
+
+    public static Bodega from(IdBodega entityId, List<DomainEvent> events){
+        var bodega = new Bodega(entityId);
+        events.forEach(bodega::applyEvent);
+        return bodega;
     }
 
     public void AgregarProducto(IdProducto entityId, Nombre nombre, Precio precio, Long stock , CodigoBarras codigoBarras , Seccion seccion , IdBodega idBodega){
@@ -46,14 +55,14 @@ public class Bodega extends AggregateEvent<IdBodega> {
     public void ActualizarPrecioProducto(IdProducto entityId , Precio precio){
         Objects.requireNonNull(entityId);
         Objects.requireNonNull(precio);
-        appendChange(new PrecioProductoActualizado(entityId,precio));
+        appendChange(new PrecioProductoActualizado(entityId,precio)).apply();
 
     }
 
     public void EliminarProducto(IdProducto entityId ){
         Objects.requireNonNull(entityId);
 
-        appendChange(new ProductoEliminado(entityId));
+        appendChange(new ProductoEliminado(entityId)).apply();
 
     }
 
@@ -61,7 +70,7 @@ public class Bodega extends AggregateEvent<IdBodega> {
 
         Objects.requireNonNull(entityId);
         Objects.requireNonNull(seccion);
-        appendChange(new SeccionProductoCambiada(entityId,seccion));
+        appendChange(new SeccionProductoCambiada(entityId,seccion)).apply();
 
     }
 
@@ -69,7 +78,7 @@ public class Bodega extends AggregateEvent<IdBodega> {
 
         Objects.requireNonNull(entityId);
         Objects.requireNonNull(nombre);
-        appendChange(new NombreProductoActualizado(entityId,nombre));
+        appendChange(new NombreProductoActualizado(entityId,nombre)).apply();
 
     }
 
@@ -77,13 +86,13 @@ public class Bodega extends AggregateEvent<IdBodega> {
     public  void  QuitarStrockProducto(IdProducto entityId ,Long stock){
         Objects.requireNonNull(entityId);
         Objects.requireNonNull(stock);
-        appendChange(new StockProductoDecrementado(entityId,stock));
+        appendChange(new StockProductoDecrementado(entityId,stock)).apply();
     }
 
     public  void  AñadirStrockProducto(IdProducto entityId ,Long stock){
         Objects.requireNonNull(entityId);
         Objects.requireNonNull(stock);
-        appendChange(new StockProductoAumentado(entityId,stock));
+        appendChange(new StockProductoAumentado(entityId,stock)).apply();
     }
 
     public Optional<Producto> BuscarProductoPorId(IdProducto entityId ){
@@ -94,11 +103,11 @@ public class Bodega extends AggregateEvent<IdBodega> {
 
     public  void  ActualizarEmailBodeguero(Email email){
         Objects.requireNonNull(email);
-        appendChange(new EmailBodegueroCambiado(email));
+        appendChange(new EmailBodegueroCambiado(email)).apply();
     }
     public  void  ActualizarDireccionBodeguero(Direccion direccion){
         Objects.requireNonNull(direccion);
-        appendChange(new DireccionBodegueroCambiada(direccion));
+        appendChange(new DireccionBodegueroCambiada(direccion)).apply();
     }
 
 

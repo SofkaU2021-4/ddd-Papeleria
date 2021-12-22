@@ -7,7 +7,7 @@ public class EmailBodegueroCambiado extends DomainEvent {
     private final Email email;
 
     public EmailBodegueroCambiado(Email email) {
-        super("sofka.bodega.DireccionBodegueroCambiada");
+        super("sofka.bodega.EmailBodegueroCambiado");
         this.email=email;
     }
 
